@@ -1,0 +1,63 @@
+﻿function functionScoping(performInitialize) {
+    if (performInitialize) {
+        var x = 10;
+    }
+    return x;
+}
+logToScreen("functionScoping():\n" + functionScoping(false) + "\n" + functionScoping(true));
+
+function redeclareVariables() {
+    var count = 0;
+    for (var i = 0; i < 5; i++ , count++) {
+        if (count >= 2) {
+            break;
+        }
+        logToScreen("Outer loop: i = " + i);
+        for (var i = 0; i < 4; i++) {
+            logToScreen(" &nbsp; &nbsp; Inner loop: i = " + i);
+        }
+    }
+}
+
+logToScreen("redclareVariables():");
+redeclareVariables();
+
+function valueCaptureWrong() {
+    for (var i = 0; i < 10; i++) {
+        setTimeout(function () { logToScreen("valueCaptureWrong(): " + i); }, 100 * i);
+    }
+}
+
+logToScreen("valueCaptureWrong():");
+valueCaptureWrong();
+
+
+function shadowingExample(useParameter, returnVal) {
+    if (!useParameter) {
+        let returnVal = 10;
+        return returnVal;
+    }
+    return returnVal;
+}
+
+logToScreen("shadowingExample():\n" + shadowingExample(true, 35) + "\n" + shadowingExample(false, 500));
+
+function shadowingExampleWithLoop() {
+    for (let i = 0; i < 5; i++) {
+        logToScreen("Outer loop: i = " + i);
+        for (let i = 0; i < 4; i++) {
+            logToScreen(" &nbsp; &nbsp; &nbsp; Inner loop: i = " + i);
+        }
+    }
+}
+
+logToScreen("shadowingExampleWithLoop():");
+shadowingExampleWithLoop();
+
+function valueCaptureCorrect() {
+    for (let i = 0; i < 10; i++) {
+        setTimeout(function () { logToScreen("valueCaptureCorrect(): " + i); }, i * 100);
+    }
+}
+
+setTimeout(function () { valueCaptureCorrect(); }, 2000);
