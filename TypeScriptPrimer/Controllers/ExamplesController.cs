@@ -13,5 +13,11 @@ namespace TypeScriptPrimer.Controllers
         {
             return View();
         }
+
+        [Route("data-types")]
+        public ViewResult DataTypes()
+        {
+            return View();
+        }
     }
 }

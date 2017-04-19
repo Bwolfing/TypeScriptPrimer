@@ -16,13 +16,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("TypeScript Primer", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="btn dropdown-toggle" data-toggle="dropdown" role="button">
+                            Examples <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink("Variable Declarations", "Declarations", "Examples")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Data types", "DataTypes", "Examples")
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -31,7 +42,11 @@
         @RenderBody()
         <div class="console">
             <div class="console-window">
-                Example
+                <div class="console-entry">
+                    <h3>
+                        Console Output
+                    </h3>
+                </div>
             </div>
         </div>
         <hr />
